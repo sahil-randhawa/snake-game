@@ -13,4 +13,6 @@ This is a simple snake game made using vanila javascript.
 
 ## Demo
 
-![Snake Game](https://sahil-randhawa.github.io/snake-game)
+Live demo: [Snake Game](https://sahil-randhawa.github.io/snake-game/)
+
+![Snake Game](./img/snakegame.png)
