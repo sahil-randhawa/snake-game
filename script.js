@@ -1,8 +1,8 @@
 /** CONSTANTS **/
 const CANVAS_BORDER_COLOUR = "white";
 const CANVAS_BACKGROUND_COLOUR = "white";
-const SNAKE_COLOUR = "lightgreen";
-const SNAKE_BORDER_COLOUR = "darkgreen";
+let SNAKE_COLOUR = "lightgreen";
+let SNAKE_BORDER_COLOUR = "darkgreen";
 const FOOD_COLOUR = "red";
 const FOOD_BORDER_COLOUR = "darkred";
 
@@ -48,6 +48,23 @@ function clearCanvas() {
 main();
 document.addEventListener("keydown", changeDirection);
 
+function changeSnakeColor() {
+    let flag = 1;
+
+    setInterval(() => {
+        if (flag == 1) {
+            SNAKE_COLOUR = '#AFC8AD';
+            SNAKE_BORDER_COLOUR = '#F2F1EB';
+            flag = 0;
+        } else {
+            SNAKE_COLOUR = '#BFD3BD';
+            SNAKE_BORDER_COLOUR = '#F2F1EB';
+            flag = 1;
+        }
+        drawSnake();
+    }, 400);
+}
+
 function randomTen(min, max) {
     return Math.round((Math.random() * (max - min) + min) / 10) * 10;
 }
@@ -76,6 +93,7 @@ function main() {
     if (didGameEnd()) {
         // alert(`Game Over! Your Score is ${score}`);
         gameover.style.visibility = "visible";
+        changeSnakeColor();
         return;
     }
     setTimeout(function onTick() {
@@ -139,7 +157,7 @@ function drawSnakePart(snakePart) {
     ctx.fillStyle = SNAKE_COLOUR;
 
     // Set the border colour of the snake part
-    ctx.strokestyle = SNAKE_BORDER_COLOUR;
+    ctx.strokeStyle = SNAKE_BORDER_COLOUR;
 
     // Draw a "filled" rectangle to represent the snake part at the coordinates
     // the part is located
@@ -177,7 +195,7 @@ function changeDirection(event) {
         dx = 10;
         dy = 0;
     }
-    if (keyPressed === DOWN_KEY && !goingDown) {
+    if (keyPressed === DOWN_KEY && !goingUp) {
         dx = 0;
         dy = 10;
     }
