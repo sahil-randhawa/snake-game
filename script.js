@@ -24,6 +24,7 @@ let foodY;
 let changingDirection = false;
 
 let score = 0;
+let level = 1;
 
 const gameover = document.getElementById("gameover");
 const restart = document.getElementById("restart");
@@ -104,7 +105,7 @@ function main() {
         drawSnake();
         // Call main again
         main();
-    }, 100);
+    }, 102 - level * 5);
 }
 
 //   endgame
@@ -136,11 +137,17 @@ function advanceSnake() {
 
     if (didEatFood) {
         score += 10;
-        document.getElementById("score").innerHTML = score;
+        level = Math.floor(score / 50) + 1;
+        updateScore();
         createFood();
     } else {
         snake.pop();
     }
+}
+
+function updateScore() {
+    document.getElementById("score").innerHTML = score;
+    document.getElementById("level").innerHTML = `Level: ${level}`;
 }
 
 /**
