@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #b8cbf5;
+  background-color: #4e586d;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ body {
   font-size: 20px;
   cursor: pointer;
   background-color: #fff;
-  color: cornflowerblue;
+  color: #4e586d;
   border: 2px solid #fff;
   border-radius: 20px;
   width: fit-content;
